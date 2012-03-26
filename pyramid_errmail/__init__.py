@@ -87,7 +87,7 @@ def includeme(config):
     config.include('pyramid_mailer')
     catchall = config.registry.settings.get('errmail.catchall','false')
     catchall = asbool(catchall)
-    add = partial(config.add_tween, errmail_tween_factory)
+    add = partial(config.add_tween, 'pyramid_errmail.errmail_tween_factory')
     if catchall:
         add(under=EXCVIEW)
     else:

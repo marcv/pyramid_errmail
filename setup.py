@@ -28,6 +28,10 @@ install_requires = [
     'pyramid_mailer',
     ]
 
+test_requires = [
+    'zope.component',
+    ]
+
 setup(name='pyramid_errmail',
       version='0.0',
       description=('A package which sends email when an exception is raised '
@@ -49,7 +53,7 @@ setup(name='pyramid_errmail',
       include_package_data=True,
       zip_safe=False,
       install_requires=install_requires,
-      tests_require=install_requires,
+      tests_require=install_requires + test_requires,
       test_suite="pyramid_errmail",
       entry_points='',
       )

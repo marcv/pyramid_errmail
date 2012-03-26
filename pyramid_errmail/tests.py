@@ -60,7 +60,7 @@ class Test_errmail_tween(unittest.TestCase):
         return tween(request)
 
     def test_nomailer(self):
-        from zope.component.registry import ComponentLookupError
+        from zope.component.interfaces import ComponentLookupError
         self.assertRaises(ComponentLookupError, self._callFUT)
         
 
@@ -104,7 +104,7 @@ class Test_includeme(unittest.TestCase):
         return includeme(config)
 
     def test_it(self):
-        from pyramid_errmail import errmail_tween_factory
+        errmail_tween_factory = 'pyramid_errmail.errmail_tween_factory'
         from pyramid.tweens import EXCVIEW
         config = DummyConfig()
         self._callFUT(config)
@@ -113,7 +113,7 @@ class Test_includeme(unittest.TestCase):
         self.assertEqual(config.included, ['pyramid_mailer'])
 
     def test_it_catchall(self):
-        from pyramid_errmail import errmail_tween_factory
+        errmail_tween_factory = 'pyramid_errmail.errmail_tween_factory'
         from pyramid.tweens import EXCVIEW
         config = DummyConfig()
         config.settings['errmail.catchall'] = 'true'
